@@ -11,33 +11,35 @@ import com.mercadolibre.sdk.MeliException;
 import com.ning.http.client.Response;
 import com.utn.dds.tpprevio.domain.*;;
 
-public class SiteHandler {
+public class CountryHandler {
 
     private static final String ID_KEY = "id";
     private static final String NAME_KEY = "name";
     private final Meli meli;
 
-    private static final SiteHandler instance = new SiteHandler();
+    private static final CountryHandler instance = new CountryHandler();
 
-    private SiteHandler() {
+    private CountryHandler() {
         meli = new Meli(11111L, "clientSecret");
     }
 
-    public static SiteHandler getInstance() {
+    public static CountryHandler getInstance() {
         return instance;
     }
 
-    public List<Site> getAllMeliSite() throws MeliException {
-        final List<Site> newSites = new ArrayList<Site>();
+    public List<Country> getAllMeliCountries() throws MeliException {
+        final List<Country> newCountries = new ArrayList<Country>();
         try {
             final Response response = meli.get("/countries/");
 
             final Gson gson = new Gson();
-            final List<StringMap<String>> sites = gson.fromJson(response.getResponseBody(), List.class);
-
-            //Convertimos los objectos StringMap a Site.
-            for (final StringMap<String> entries : sites) {
-                newSites.add(new Site(entries.get(ID_KEY), entries.get(NAME_KEY)));
+            final List<StringMap<String>> countries = gson.fromJson(response.getResponseBody(), List.class);
+            //response.get
+            //Convertimos los objectos StringMap a Country.
+            
+         
+            for (final StringMap<String> entries : countries) {
+                newCountries.add(new Country(entries.get(ID_KEY), entries.get(NAME_KEY)));
             }
         } catch (MeliException ex) {
             //Logger error en la respuesta
@@ -46,6 +48,6 @@ public class SiteHandler {
             //Logger error en la transformacion usando de gson.
             System.out.println("Error " + e.getMessage());
         }
-        return newSites;
+        return newCountries;
     }
 }

@@ -7,10 +7,14 @@ import com.utn.dds.tpprevio.domain.*;;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        final List<Site> sites = SiteHandler.getInstance().getAllMeliSite();
+        final List<Country> countries = CountryHandler.getInstance().getAllMeliCountries();
 
-        for (final Site site: sites) {
-            System.out.println(site);
+        for (final Country country: countries) {
+            System.out.println(country);
         }
+        final List<State> provs = StateHandler.getInstance().getAllMeliState("AR");
+        
+        
+        
     }
 }
