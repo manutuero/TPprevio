@@ -10,6 +10,7 @@ import com.mercadolibre.sdk.MeliException;
 import com.ning.http.client.Response;
 import com.utn.dds.tpprevio.domain.Country;
 import com.utn.dds.tpprevio.domain.State;
+import org.json.*;
 
 public class StateHandler {
 	private static final String ID_KEY = "id";
@@ -33,17 +34,18 @@ public class StateHandler {
        
         try {
             final Response response = meli.get("/countries/"+pais);
-            final Gson gson = new Gson(); 
-            final StringMap<String> paisSeleccionado = gson.fromJson(response.getResponseBody(), StringMap.class);
-      
-           //System.out.println(paisSeleccionado.getClass()); 
-           //System.out.println(paisSeleccionado.get(STATES_KEY).getClass());
-           //final List<StringMap<String>> provincias = (List)gson.fromJson(paisSeleccionado.get(STATES_KEY), List.class);
-           /*
-           for (final StringMap<String> provincia : provincias) {   
-        	    gson.fromJson(provincia.toString(),StringMap.class);
-                System.out.println(provincia.get(NAME_KEY));
-            }*/
+            //final Gson gson = new Gson(); 
+           // final StringMap<String> paisSeleccionado = gson.fromJson(response.getResponseBody(), StringMap.class);
+            try{
+            JSONObject paisJson = new JSONObject(response.getResponseBody()); 
+            JSONArray params = paisJson.getJSONArray("states");
+            for (int j = 0; j < params.length(); j++) {
+                JSONObject obj1 = params.getJSONObject(j);
+                System.out.println(obj1.getString("name"));
+              }
+            
+            
+            } catch (JSONException js){}
         } catch (MeliException ex) {
             //Logger error en la respuesta
             System.out.println("Error " + ex.getMessage());
