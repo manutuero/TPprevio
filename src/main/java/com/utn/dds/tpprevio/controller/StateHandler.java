@@ -3,8 +3,6 @@ package com.utn.dds.tpprevio.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import com.google.gson.Gson;
-import com.google.gson.internal.StringMap;
 import com.mercadolibre.sdk.Meli;
 import com.mercadolibre.sdk.MeliException;
 import com.ning.http.client.Response;
@@ -34,17 +32,13 @@ public class StateHandler {
        
         try {
             final Response response = meli.get("/countries/"+pais);
-            //final Gson gson = new Gson(); 
-           // final StringMap<String> paisSeleccionado = gson.fromJson(response.getResponseBody(), StringMap.class);
             try{
             JSONObject paisJson = new JSONObject(response.getResponseBody()); 
-            JSONArray params = paisJson.getJSONArray("states");
-            for (int j = 0; j < params.length(); j++) {
-                JSONObject obj1 = params.getJSONObject(j);
-                System.out.println(obj1.getString("name"));
+            JSONArray states = paisJson.getJSONArray("states");
+            for (int j = 0; j < states.length(); j++) {
+                JSONObject stateFromPais = states.getJSONObject(j);
+                newStates.add(new State(stateFromPais.getString("id"),stateFromPais.getString("name")));
               }
-            
-            
             } catch (JSONException js){}
         } catch (MeliException ex) {
             //Logger error en la respuesta

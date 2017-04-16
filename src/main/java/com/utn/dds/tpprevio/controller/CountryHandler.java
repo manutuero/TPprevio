@@ -34,8 +34,6 @@ public class CountryHandler {
 
             final Gson gson = new Gson();
             final List<StringMap<String>> countries = gson.fromJson(response.getResponseBody(), List.class);
-            //response.get
-            //Convertimos los objectos StringMap a Country.
             
          
             for (final StringMap<String> entries : countries) {

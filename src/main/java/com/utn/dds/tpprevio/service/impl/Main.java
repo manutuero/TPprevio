@@ -12,6 +12,9 @@ public class Main {
         for (final Country country: countries) {
             System.out.println(country);
             final List<State> provs = StateHandler.getInstance().getAllMeliState(country.getId());
+            for (final State state: provs) {
+            	System.out.println(state);
+            }
         }
         
         
