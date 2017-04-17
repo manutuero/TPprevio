@@ -38,18 +38,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return ingresa;
 	}
 	
-	public String cambiarPassword(String username, String password) {
-		String respuesta = null;
-		
-		if(username == null || username.trim().isEmpty()) {
-			respuesta = "Debe ingresar un usuario";
+	public void cambiarPassword(String username, String password) {
+		if(username == null || password == null || username.isEmpty() || password.isEmpty()) {
+			/* No modifica */
+		} else {
+			usuarioRepository.cambiarPassword(username,password);
 		}
-		else if(password == null || password.trim().isEmpty()) {
-			respuesta = "Debe ingresar una contraseña.";
-		}
-		
-		usuarioRepository.cambiarPassword(username,password);
-		
-		return respuesta;
 	}
 }
