@@ -10,14 +10,11 @@
 		<div class="container">
 			<%--Comienzo de Encabezado--%>
 			<div class="row">
-				<div class="col-xs-4">
-                    <h1>Login</h1>                    
+				<div class="col-md-2" style="background-color: black;"></div>
+                <div class="col-md-8">
+                    <h1>Login</h1>                
                 </div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-md-offset-4">
-                	<h1>GABI GATO :p</h1>
-                </div>
+                <div class="col-md-2" style="background-color: black;"></div>
 			</div>
 		</div>
 	</body>

@@ -16,23 +16,26 @@ public class UsuarioServiceImpl implements UsuarioService {
 		this.usuarioRepository = usuarioRepository;
 	}
 
-	public String iniciarSesion(String username, String password) {
-		String respuesta = null;
+	public Boolean iniciarSesion(String username, String password) {
+		Boolean ingresa = false;
 		Usuario usuario = usuarioRepository.buscarPorId(username);
 
+		// el usuario ingresado no existe.
 		if(username == null || username.trim().isEmpty() || usuario == null) {
-			respuesta = "El usuario ingresado no existe.";
+			ingresa = false;
 		} 
 		
+		// no se ingreso contraseña
 		else if (password == null || password.trim().isEmpty())
 		{
-			respuesta = "Error, debe ingresar una contraseña.";
+			ingresa = false;
 		}
 		
+		// ingresa
 		else if (username.equals(usuario.getUsername()) && password.equals(usuario.getPassword())) {
-			respuesta = "Bienvenido! " + username + ".";
+			ingresa = true;
 		}
-		return respuesta;
+		return ingresa;
 	}
 	
 	public String cambiarPassword(String username, String password) {
