@@ -1,8 +1,12 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Login Form</title>
+  <title>Cambio de Contrasenia</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -73,24 +77,44 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 
 </head>
 
-<body>
-  <div class="login">
-	<h1>Login</h1>
-<<<<<<< HEAD
-    <form action="UsuarioController" method="post">
-=======
-    <form action="loginWeb.jr" method="POST" >
->>>>>>> 363425081e58aa1eab0c249c7ec55fae8b78cef0
-    	<input type="text" name="username" placeholder="Usuario" required="required" />
-        <input type="password" name="password" placeholder="Contraseña" required="required" />
-        <button type="submit" class="btn btn-primary btn-block btn-large">Ingresar</button>
-    </form>
-    <br>
-    <br>
-    <span style="color: white" hidden="false">El usuario ingresado no existe, o la contraseña es incorrecta.</span>
-  </div>
-  
-    <script src="js/index.js"></script>
+<div class="row" id ="password_modal">
+    
 
-</body>
+    <div class="modal-header">
+        <h3>Change Password <span class="extra-title muted"></span></h3>
+    </div>
+    <div class="modal-body form-horizontal">
+        <div class="control-group">
+            <label for="current_password" class="control-label">Current Password</label>
+            <div class="controls">
+                <input type="password" name="current_password">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="new_password" class="control-label">New Password</label>
+            <div class="controls">
+                <input type="password" name="new_password">
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="confirm_password" class="control-label">Confirm Password</label>
+            <div class="controls">
+                <input type="password" name="confirm_password">
+            </div>
+        </div>      
+    </div>
+    <div class="modal-footer">
+        <button href="#" class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+        <button type=submit href="#" class="btn btn-primary" id="password_modal_save">Guardar Cambios</button>
+    </div>
+     
+</div>
 </html>
+
+
+
+
+
+
+
+

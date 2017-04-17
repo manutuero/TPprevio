@@ -19,6 +19,7 @@ public class UsuarioController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private UsuarioService usuarioService = new UsuarioServiceImpl(new UsuarioRepositoryImpl());
+<<<<<<< HEAD
 
 	public UsuarioController() {
 		super();
@@ -26,14 +27,36 @@ public class UsuarioController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
+=======
+		
+    public UsuarioController() {
+        super();
+    }
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+    	String username = request.getParameter("username");
+>>>>>>> 363425081e58aa1eab0c249c7ec55fae8b78cef0
     	String password = request.getParameter("password");
 
     	Boolean ingresa = usuarioService.iniciarSesion(username, password);
+<<<<<<< HEAD
         
     	if(ingresa) {
         	response.sendRedirect("bienvenido.jsp");;
         }else {
         	
         }
+=======
+    	System.out.println("Entra al post");
+    
+    	if(ingresa) {
+    		request.getRequestDispatcher("bienvenido.jsp").forward(request, response);
+    		System.out.println("LLEGA!!!");
+    	}else {
+			System.out.println("No entro al servidor.");
+			response.sendRedirect("index.html");
+    	}
+>>>>>>> 363425081e58aa1eab0c249c7ec55fae8b78cef0
     }
 }
