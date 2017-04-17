@@ -77,8 +77,9 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 
 </head>
 
-<div class="modal" id ="password_modal">
+<div class="row" id ="password_modal">
     
+
     <div class="modal-header">
         <h3>Change Password <span class="extra-title muted"></span></h3>
     </div>
@@ -104,7 +105,16 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
     </div>
     <div class="modal-footer">
         <button href="#" class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-        <button href="#" class="btn btn-primary" id="password_modal_save">Guardar Cambios</button>
+        <button type=submit href="#" class="btn btn-primary" id="password_modal_save">Guardar Cambios</button>
     </div>
+     
 </div>
 </html>
+
+
+
+
+
+
+
+
