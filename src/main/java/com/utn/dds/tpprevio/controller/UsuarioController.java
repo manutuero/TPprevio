@@ -24,12 +24,14 @@ public class UsuarioController extends HttpServlet {
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
+        
+    	String username = request.getParameter("username");
     	String password = request.getParameter("password");
     	Boolean ingresa = usuarioService.iniciarSesion(username, password);
-    	
+    	System.out.println("Entra al post");
+    
     	if(ingresa) {
-    		request.getRequestDispatcher("indexJavaianos.jsp").forward(request, response);
+    		request.getRequestDispatcher("bienvenido.jsp").forward(request, response);
     		System.out.println("LLEGA!!!");
     	}else {
 			System.out.println("No entro al servidor.");
