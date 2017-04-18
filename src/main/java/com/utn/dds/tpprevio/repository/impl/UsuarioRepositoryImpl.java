@@ -21,12 +21,6 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 			// establezco la conexion pidiendosela a la clase utilitaria que creamos "ConnectionManager"
 			connection = ConnectionManager.getConnection();
 			
-			sql="drop TABLE usuario IF exis";
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.execute();
-			
-			sql="CREATE TABLE usuario ";
-			
 			// defino un query (con parametro)
 			sql = "SELECT * FROM usuario WHERE username = ?";
 			preparedStatement = connection.prepareStatement(sql);
