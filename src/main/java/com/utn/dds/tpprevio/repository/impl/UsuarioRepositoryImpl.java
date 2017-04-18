@@ -20,7 +20,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 		try {
 			// establezco la conexion pidiendosela a la clase utilitaria que creamos "ConnectionManager"
 			connection = ConnectionManager.getConnection();
-
+			
 			// defino un query (con parametro)
 			sql = "SELECT * FROM usuario WHERE username = ?";
 			preparedStatement = connection.prepareStatement(sql);
