@@ -3,10 +3,9 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app >
- 
+<web-app>
  <display-name>TPPREVIO</display-name> 
- 
+
   <servlet>
   	<servlet-name>UsuarioController</servlet-name>
   	<servlet-class>com.utn.dds.tpprevio.controller.UsuarioController</servlet-class>
@@ -14,7 +13,11 @@
   
   <servlet-mapping>
   	<servlet-name>UsuarioController</servlet-name>
-  	<url-pattern>/UsuarioController</url-pattern>
+  	<url-pattern>/login</url-pattern>
   </servlet-mapping>
+  
+   	<welcome-file-list>
+ 		<welcome-file>login.jsp</welcome-file>
+ 	</welcome-file-list>
  
 </web-app>
