@@ -28,6 +28,8 @@ public class UsuarioController extends HttpServlet {
     	String password = request.getParameter("password");
 
     	Boolean ingresa = usuarioService.iniciarSesion(username, password);
-    	response.sendRedirect("bienvenido.jsp");
+    	if(ingresa){
+    		response.sendRedirect("bienvenido.jsp");
+    	} else {response.sendRedirect("login.html");}
     }
 }
