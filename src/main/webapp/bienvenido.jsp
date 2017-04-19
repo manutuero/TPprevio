@@ -10,44 +10,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>TP Previo - Bienvenido</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css/styles.css" type="text/css">
 </head>
 <body>
 	<div class="container">
 		<%--Comienzo de Encabezado--%>
 		<div class="row">
-			<div class="col-xs-2" style="background-color: #292A34;">
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br> <br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
+			<div class="col-xs-2">
 			</div>
 			<div class="col-xs-8 jumbotron">
-				<h1>Bienvenido!</h1>
+				<h1> Bienvenido! </h1>
+				<p> ¿Que desea hacer? </p>
 				<div class="col-xs-4">
 					<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Cambiar contraseña</button>
 					
@@ -63,14 +36,8 @@
 								</div>
 								<div class="modal-body">
 									<p>Complete los campos para realizar el cambio de contraseña.</p>
-									<input type="text" name="username" placeholder="Usuario" required="required" />
-									<br>
-									<br>
-									<input type="password" name="password" placeholder="Nueva Contraseña" required="required" />
-									<br>
-									<br>
-									<input type="password" name="new-password" placeholder="Ingresar Nuevamente" required="required" />
-									<br>
+									<input class="form-control" type="password" name="password" placeholder="Nueva Contraseña" required="required" />
+									<input class="form-control" type="password" name="new-password" placeholder="Ingresar Nuevamente" required="required" />
 								</div>
 								<div class="modal-footer">
 									<button type="submit" class="btn btn-success">Aceptar</button>
@@ -118,36 +85,7 @@
 						
 				</div>
 			</div>
-			<div class="col-xs-2" style="background-color: #292A34;">
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br> <br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
+			<div class="col-xs-2">
 			</div>
 		</div>
 	</div>
