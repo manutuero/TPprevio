@@ -14,10 +14,6 @@ import com.utn.dds.tpprevio.service.UsuarioService;
 import com.utn.dds.tpprevio.service.impl.UsuarioServiceImpl;
 import com.utn.dds.tpprevio.domain.Usuario;
 
-/**
- * Servlet implementation class UsuarioController
- */
-
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UsuarioService usuarioService = new UsuarioServiceImpl(new UsuarioRepositoryImpl());
@@ -27,28 +23,29 @@ public class LoginController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login");
 		requestDispatcher.include(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
+		String username = request.getParameter("username");
     	String password = request.getParameter("password");
 
     	Boolean ingresa = usuarioService.iniciarSesion(username, password);
+    	
+    	RequestDispatcher requestDispatcher = null;
     	
     	if(ingresa) {
     		Usuario usuario = new Usuario();
     		usuario.setUsername(username);
     		usuario.setPassword(password);
     		
-    		HttpSession httpSession = request.getSession(true); 
-    		httpSession.setAttribute("usuario", usuario);
-    		
+    		HttpSession httpSession = request.getSession(true); // si no le paso nada tambien crea la sesion por defecto
+    		httpSession.setAttribute("usuario", usuario); // httpSession es un HashMap ("clave" = valor)
     		response.sendRedirect("bienvenido.jsp");
     	} else {
     		request.setAttribute("error", "La combinacion de usuario y contraseña es incorrecta");
-    		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
+    		requestDispatcher = request.getRequestDispatcher("login.jsp");
     		requestDispatcher.include(request, response);
     	}
     }

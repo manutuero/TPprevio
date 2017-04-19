@@ -22,17 +22,19 @@ public class UsuarioController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession httpSession = (HttpSession) request.getSession();
 		
 		Usuario usuarioLogueado = (Usuario) httpSession.getAttribute("usuario");
-		String nuevaPassword = request.getParameter("password");
-		
-		usuarioService.cambiarPassword(usuarioLogueado.getUsername(), nuevaPassword);
+		if(usuarioLogueado == null) {
+			response.sendRedirect("login.jsp");
+		} else {
+			String nuevaPassword = request.getParameter("password");	
+			usuarioService.cambiarPassword(usuarioLogueado.getUsername(), nuevaPassword);
+			response.sendRedirect("bienvenido.jsp");
+		}
 	}
 
 }
