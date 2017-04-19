@@ -88,12 +88,21 @@
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title">Seleccionador de Provincias</h4>
 								</div>
+								<br>
 								<div class="modal-body">
 									<p>Seleccionar un pais y una provincia para agregar a la base de datos.</p>
-									<input type="Text" name="Pais" placeholder="Seleccionar un Pais" required="required" />
+										<select id="Country" name="Country" class="modal-content" size="1" >
+     									   <option value="" >Seleccionar un pais</option>
+     									   <option value="Argentina" >Argentina</option>
+    									   <option value="otro">United States</option>
+  									    </select>
 									<br>
 									<br>
-									<input type="Text" name="Provincia" placeholder="Seleccionar una Provincia" required="required" />
+									<select id="prov" name="Provincia" class="modal-content" >
+										 <option value=""  >Seleccionar una provincia</option>
+     									 <option value="prov1">prov1</option>
+    									 <option value="prov2">prov2</option>
+  									</select>
 									<br>
 								</div>
 								<div class="modal-footer">
