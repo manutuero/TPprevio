@@ -49,9 +49,9 @@ public class UsuarioServiceImplTest {
 
 	@Test
 	public void cambiarPassword_conPasswordValida_modificaPassword() {
-		usuarioService.cambiarPassword("manu", "nueva");
+		usuarioService.cambiarPassword("manu", "otra");
 		Usuario usuario = usuarioRepository.buscarPorId("manu");
-		assertEquals("nueva", usuario.getPassword());
+		assertEquals("otra", usuario.getPassword());
 	}
 
 	@Test

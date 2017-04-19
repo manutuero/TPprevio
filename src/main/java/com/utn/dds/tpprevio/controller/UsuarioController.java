@@ -1,45 +1,38 @@
 package com.utn.dds.tpprevio.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.utn.dds.tpprevio.repository.impl.UsuarioRepositoryImpl;
 import com.utn.dds.tpprevio.service.UsuarioService;
 import com.utn.dds.tpprevio.service.impl.UsuarioServiceImpl;
-
-/**
- * Servlet implementation class UsuarioController
- */
+import com.utn.dds.tpprevio.domain.Usuario;
 
 public class UsuarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+    
 	private UsuarioService usuarioService = new UsuarioServiceImpl(new UsuarioRepositoryImpl());
-
-	public UsuarioController() {
-		super();
-	}
+	
+    public UsuarioController() {
+        super();
+    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
-		requestDispatcher.include(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-    	String password = request.getParameter("password");
 
-    	Boolean ingresa = usuarioService.iniciarSesion(username, password);
-    	if(ingresa) {
-    		response.sendRedirect("bienvenido.jsp");
-    	} else {
-    		request.setAttribute("error", "La combinacion de usuario y contraseña es incorrecta");
-    		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
-    		requestDispatcher.include(request, response);
-    	}
-    }
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession httpSession = (HttpSession) request.getSession();
+		
+		Usuario usuarioLogueado = (Usuario) httpSession.getAttribute("usuario");
+		String nuevaPassword = request.getParameter("password");
+		
+		usuarioService.cambiarPassword(usuarioLogueado.getUsername(), nuevaPassword);
+	}
+
 }
