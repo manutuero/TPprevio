@@ -50,6 +50,9 @@
 				<h1>Bienvenido!</h1>
 				<div class="col-xs-4">
 					<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Cambiar contraseña</button>
+					
+					<!--Inicio modal-->
+					<form action="bienvenido" method="post">
 					<div id="myModal" class="modal fade" role="dialog" >
 						<div class="modal-dialog">
 							<!-- Modal content-->
@@ -59,24 +62,24 @@
 									<h4 class="modal-title">Cambiar contraseña</h4>
 								</div>
 								<div class="modal-body">
-									<p>Complete los campos para realizar el cambio de contraseña	.</p>
-									<input type="password" name="ContraActual" placeholder="Contraseña Actual" required="required" />
+									<p>Complete los campos para realizar el cambio de contraseña.</p>
+									<input type="text" name="username" placeholder="Usuario" required="required" />
 									<br>
 									<br>
-									<input type="password" name="NuevaContra" placeholder="Nueva Contraseña" required="required" />
+									<input type="password" name="password" placeholder="Nueva Contraseña" required="required" />
 									<br>
 									<br>
-									<input type="password" name="NuevaContraControl" placeholder="Ingresar Nuevamente" required="required" />
+									<input type="password" name="new-password" placeholder="Ingresar Nuevamente" required="required" />
 									<br>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+									<button type="submit" class="btn btn-success">Aceptar</button>
 									<button type="button" class="btn btn-default"data-dismiss="modal">Cerrar</button>
 								</div>
 							</div>
 						</div>
 					</div>
-					
+					</form>
 					<br>
 					
 					<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalProvincias"> Administrar provincias</button>
