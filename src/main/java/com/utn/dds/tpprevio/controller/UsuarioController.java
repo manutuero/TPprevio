@@ -23,7 +23,6 @@ public class UsuarioController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.sendRedirect("bienvenido.jsp");
-		System.out.println("PORQUE ENTRA ACA!");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
