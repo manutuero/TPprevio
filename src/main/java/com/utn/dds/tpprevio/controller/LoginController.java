@@ -21,11 +21,6 @@ public class LoginController extends HttpServlet {
 	public LoginController() {
 		super();
 	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login");
-		requestDispatcher.include(request, response);
-	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
@@ -41,8 +36,11 @@ public class LoginController extends HttpServlet {
     		usuario.setPassword(password);
     		
     		HttpSession httpSession = request.getSession(true); // si no le paso nada tambien crea la sesion por defecto
-    		httpSession.setAttribute("usuario", usuario); // httpSession es un HashMap ("clave" = valor)
-    		response.sendRedirect("bienvenido.jsp");
+    		httpSession.setAttribute("username", username); // httpSession es un HashMap ("clave" = valor)
+    		httpSession.setAttribute("password", password);
+    		
+    		requestDispatcher = request.getRequestDispatcher("/WEB-INF/bienvenido.jsp");
+    		requestDispatcher.forward(request, response);
     	} else {
     		request.setAttribute("error", "La combinacion de usuario y contraseña es incorrecta");
     		requestDispatcher = request.getRequestDispatcher("login.jsp");

@@ -22,20 +22,19 @@ public class UsuarioController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//response.sendRedirect("bienvenido.jsp");
-		System.out.println("PORQUE ENTRA ACA!");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession httpSession = (HttpSession) request.getSession();
+		HttpSession httpSession = (HttpSession) request.getSession();	
+		String username = (String) httpSession.getAttribute("username");
 		
-		Usuario usuarioLogueado = (Usuario) httpSession.getAttribute("usuario");
-		if(usuarioLogueado == null) {
+		if(username == null) {
 			response.sendRedirect("login.jsp");
 		} else {
-			String nuevaPassword = request.getParameter("password");	
-			usuarioService.cambiarPassword(usuarioLogueado.getUsername(), nuevaPassword);
-			response.sendRedirect("bienvenido.jsp");
+			String password = request.getParameter("password");	
+			usuarioService.cambiarPassword(username, password);
+			request.setAttribute("mensajeOk", "Su contraseña ha sido cambiada correctamente.");
+			request.getRequestDispatcher("/WEB-INF/bienvenido.jsp").forward(request, response);
 		}
 	}
 
