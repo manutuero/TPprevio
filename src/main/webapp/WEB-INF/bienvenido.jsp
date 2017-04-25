@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -33,7 +34,7 @@
 				</div>
 
 					<!--Inicio modal cambiar contraseña -->
-					<form action = "bienvenido" name = "form-cambio-password" method="post">
+					<form action = "cambiar-contraseña" name = "form-cambio-password" method="post">
 					<div id="myModal" class="modal fade" role="dialog" >
 						<div class="modal-dialog">
 							<!-- Modal content-->
@@ -97,7 +98,6 @@
 			<div class="col-xs-2">
 				<!-- (columna vacia por estetica) -->
 			</div>
-		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
