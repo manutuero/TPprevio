@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS usuario;
-DROP TABLE IF EXISTS provincia;
-DROP TABLE IF EXISTS pais;
+DROP TABLE IF EXISTS state;
+DROP TABLE IF EXISTS country;
 
 CREATE TABLE usuario
 ( username VARCHAR(25) PRIMARY KEY,
@@ -8,18 +8,18 @@ CREATE TABLE usuario
   activo BOOLEAN DEFAULT true
 );
 
-CREATE TABLE pais
-( codigo_pais VARCHAR(4) PRIMARY KEY,
-  nombre_pais VARCHAR(25),
-  UNIQUE KEY (nombre_pais)
+CREATE TABLE country
+( codigo_country VARCHAR(4) PRIMARY KEY,
+  nombre_country VARCHAR(25),
+  UNIQUE KEY (nombre_country)
 );
 
-CREATE TABLE provincia 
-( codigo_provincia VARCHAR(4) PRIMARY KEY,
-  nombre_provincia VARCHAR(40) ,
-  fk_pais VARCHAR(4),  
-  UNIQUE KEY (nombre_provincia),
-  FOREIGN KEY(FK_PAIS) REFERENCES pais(codigo_pais)
+CREATE TABLE state 
+( codigo_state VARCHAR(4) PRIMARY KEY,
+  nombre_state VARCHAR(40) ,
+  fk_country VARCHAR(4),  
+  UNIQUE KEY (nombre_state),
+  FOREIGN KEY(FK_country) REFERENCES country(codigo_country)
 );
 
 INSERT INTO usuario (username, password, activo) VALUES ('manu','1234',true); 
