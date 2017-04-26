@@ -10,7 +10,7 @@ public class Main {
         final List<Country> countries = CountryHandler.getInstance().getAllMeliCountries();
 
         for (final Country country: countries) {
-            System.out.println(country);
+            System.out.println(country.getName());
             final List<State> provs = StateHandler.getInstance().getAllMeliState(country.getId());
             for (final State state: provs) {
             	System.out.println(state);
