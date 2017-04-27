@@ -15,6 +15,7 @@ import com.utn.dds.tpprevio.service.impl.UsuarioServiceImpl;
 import com.utn.dds.tpprevio.domain.Usuario;
 
 public class LoginController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	private UsuarioService usuarioService = new UsuarioServiceImpl(new UsuarioRepositoryImpl());
 

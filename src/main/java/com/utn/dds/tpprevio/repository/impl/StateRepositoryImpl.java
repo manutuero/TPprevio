@@ -54,7 +54,7 @@ public class StateRepositoryImpl implements StateRepository {
 		}finally {try {connection.close();}catch (SQLException sq){}}
 		return state;
 	}
-	public List<State> buscarStates(Country country){
+	public List<State> buscarStates(Country country) {
 		
 		final List<State> states= new ArrayList<State>();
 		State state = null;
@@ -80,8 +80,4 @@ public class StateRepositoryImpl implements StateRepository {
 			}
 		return states;
 	}
-	
-	
-	
-	
 }
