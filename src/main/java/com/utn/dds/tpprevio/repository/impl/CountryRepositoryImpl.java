@@ -3,11 +3,12 @@ package com.utn.dds.tpprevio.repository.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.utn.dds.tpprevio.domain.Country;
 import com.utn.dds.tpprevio.repository.CountryRepository;
 
-public class CountryRespositoryImpl implements CountryRepository {
+public class CountryRepositoryImpl implements CountryRepository {
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
@@ -19,6 +20,8 @@ public class CountryRespositoryImpl implements CountryRepository {
 			// creamos "ConnectionManager"
 			connection = ConnectionManager.getConnection();
 
+			//System.out.println("ENTRO POR COUNTRY");
+			
 			sql = "INSERT INTO country (codigo_country,nombre_country) VALUES (?,?)";
 
 			preparedStatement = connection.prepareStatement(sql);
@@ -28,7 +31,7 @@ public class CountryRespositoryImpl implements CountryRepository {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException(ex);
-		}
+		} finally {try {connection.close();}catch (SQLException sq){}}
 	}
 
 	public Country buscarPorId(String idPais) {
@@ -46,7 +49,7 @@ public class CountryRespositoryImpl implements CountryRepository {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException(ex);
-		}
+		} finally {try {connection.close();}catch (SQLException sq){}}
 		return country;
 	}
 }
