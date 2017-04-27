@@ -1,5 +1,6 @@
 <%@page import="java.io.PrintWriter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 
 <html>
@@ -71,18 +72,20 @@
 								<br>
 								<div class="modal-body">
 									<p>Seleccionar un pais y una provincia para agregar a la base de datos.</p>
-										<select id="Country" name="Country" class="modal-content" size="1" >
-     									   <option value="" >Seleccionar un pais</option>
-     									   <option value="Argentina" >Argentina</option>
-    									   <option value="otro">United States</option>
+										<select id="country" name="country" class="modal-content" size="1" >
+     									   	<option>Seleccionar un pais</option> 		   	
+										  <c:forEach var="country" items="${countries}">
+     									   	<option value="${country}">${country}</option>
+     									  </c:forEach>
   									    </select>
 									<br>
 									<br>
-									<select id="prov" name="Provincia" class="modal-content" >
-										 <option value=""  >Seleccionar una provincia</option>
-     									 <option value="prov1">prov1</option>
-    									 <option value="prov2">prov2</option>
-  									</select>
+										<select id="state" name="state" class="modal-content" >
+											<option>Seleccionar una provincia</option>
+										  <c:forEach var="state" items="${states}">
+     									 	<option value="${state}">${state}</option>
+     									  </c:forEach>
+  										</select>
 									<br>
 								</div>
 								<div class="modal-footer">
