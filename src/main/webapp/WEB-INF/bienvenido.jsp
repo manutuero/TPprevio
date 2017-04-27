@@ -72,6 +72,7 @@
 								<br>
 								<div class="modal-body">
 									<p>Seleccionar un pais y una provincia para agregar a la base de datos.</p>
+										
 										<select id="country" name="country" class="modal-content" size="1" >
      									   	<option>Seleccionar un pais</option> 		   	
 										  <c:forEach var="country" items="${countries}">
@@ -91,6 +92,10 @@
 								<div class="modal-footer">
 									<button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
 									<button type="button" class="btn btn-default"data-dismiss="modal">Cerrar</button>
+									<form action="actualizar-base">
+										<button title="Actualiza la base de datos con la lista de paises y estados que obtiene de la API de MercadoLibre"
+									 		type="input" class="btn btn-primary">Actualizar Base</button>
+									</form>
 								</div>
 							</div>
 						</div>

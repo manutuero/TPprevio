@@ -66,7 +66,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		jsonObject.put("password", password);
 
 		// new try Java from 1.8
-		try (FileWriter file = new FileWriter("/logger.json", true);) {
+		try (FileWriter file = new FileWriter("logger.json", true);) {
 			file.write(jsonObject.toJSONString() + "\n");
 			file.flush();
 		} catch (IOException ex) {

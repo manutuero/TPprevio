@@ -14,18 +14,15 @@ public class CountryServiceImpl implements CountryService {
 	private CountryRepository countryRepository = new CountryRepositoryImpl();
 	private StateRepository stateRepository = new StateRepositoryImpl();
 	
-    public void agregarPais(String codigo_pais, String nombre_pais) {
-    	
-    }
-	public Country buscarPorId(String idPais) {
-		return null;
-	}
 	public void actualizarBase(Country country, List<State> states) {
 		countryRepository.agregar(country.getId(), country.getName());
 		for(int i=0; i < states.size(); i++) {
 			State state = states.get(i);
-			//System.out.println(state.getName());	
 			stateRepository.agregar(state.getId(), state.getName(), country.getId());
 		}
+	}
+	
+	public List<Country> buscarCountries() {
+		return countryRepository.buscarCountries();
 	}
 }
