@@ -16,6 +16,11 @@
 		<servlet-class>com.utn.dds.tpprevio.controller.UsuarioController</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>CountryController</servlet-name>
+		<servlet-class>com.utn.dds.tpprevio.controller.CountryController</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>LoginController</servlet-name>
 		<url-pattern>/bienvenido</url-pattern>
@@ -24,6 +29,11 @@
 	<servlet-mapping>
 		<servlet-name>UsuarioController</servlet-name>
 		<url-pattern>/cambiar-contraseña</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>CountryController</servlet-name>
+		<url-pattern>/actualizar-base</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
