@@ -3,7 +3,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.utn.dds.tpprevio.domain.Country;
 import com.utn.dds.tpprevio.domain.State;
 import com.utn.dds.tpprevio.repository.StateRepository;
 
@@ -50,5 +53,35 @@ public class StateRepositoryImpl implements StateRepository {
 			throw new RuntimeException(ex);
 		}finally {try {connection.close();}catch (SQLException sq){}}
 		return state;
-	}	
+	}
+	public List<State> buscarStates(Country country){
+		
+		final List<State> states= new ArrayList<State>();
+		State state = null;
+		try {
+			connection = ConnectionManager.getConnection();
+
+			String sql = "SELECT * FROM state where fk_country=? ";
+			preparedStatement.setString(1, country.getId());
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				state = new State(resultSet.getString("codigo_state"), resultSet.getString("nombre_state"));
+				states.add(state);
+			}
+		}  catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
+		}  finally {
+			try {
+				connection.close();
+				} catch (SQLException sq){	
+					}
+			}
+		return states;
+	}
+	
+	
+	
+	
 }
