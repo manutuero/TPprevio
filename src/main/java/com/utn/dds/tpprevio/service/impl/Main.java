@@ -1,20 +1,11 @@
 package com.utn.dds.tpprevio.service.impl;
 
-import java.util.List;
-import com.utn.dds.tpprevio.controller.*;
-import com.utn.dds.tpprevio.domain.*;;
+import com.utn.dds.tpprevio.controller.CountryController;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        final List<Country> countries = CountryHandler.getInstance().getAllMeliCountries();
-
-        for (final Country country: countries) {
-            System.out.println(country.getName());
-            final List<State> provs = StateHandler.getInstance().getAllMeliState(country.getId());
-            for (final State state: provs) {
-            	System.out.println(state);
-            }
-        }
+        CountryController countryController = new CountryController();
+        countryController.actualizarBase();
     }
 }

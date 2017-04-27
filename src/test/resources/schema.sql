@@ -9,16 +9,15 @@ CREATE TABLE usuario
 );
 
 CREATE TABLE country
-( codigo_country VARCHAR(4) PRIMARY KEY,
+( codigo_country VARCHAR(10) PRIMARY KEY,
   nombre_country VARCHAR(25),
   UNIQUE KEY (nombre_country)
 );
 
 CREATE TABLE state 
-( codigo_state VARCHAR(4) PRIMARY KEY,
+( codigo_state VARCHAR(10) PRIMARY KEY,
   nombre_state VARCHAR(40) ,
-  fk_country VARCHAR(4),  
-  UNIQUE KEY (nombre_state),
+  fk_country VARCHAR(10),  
   FOREIGN KEY(FK_country) REFERENCES country(codigo_country)
 );
 

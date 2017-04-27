@@ -2,6 +2,8 @@ package com.utn.dds.tpprevio.repository.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.utn.dds.tpprevio.domain.State;
 import com.utn.dds.tpprevio.repository.StateRepository;
 
@@ -10,24 +12,26 @@ public class StateRepositoryImpl implements StateRepository {
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 
-	public void agregar(String codigo_state, String nombre_state,String fk_state) {
+	public void agregar(String codigo_state, String nombre_state,String fk_country) {
 		String sql = null;
 		try {
 			// establezco la conexion pidiendosela a la clase utilitaria que
 			// creamos "ConnectionManager"
 			connection = ConnectionManager.getConnection();
 
+			//System.out.println("ENTRO POR STATES");
+			
 			sql = "INSERT INTO state (codigo_state,nombre_state,fk_country) VALUES (?,?,?)";
 
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, codigo_state);
 			preparedStatement.setString(2, nombre_state);
-			preparedStatement.setString(3, fk_state);
+			preparedStatement.setString(3, fk_country);
 			preparedStatement.executeUpdate();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException(ex);
-		}
+		}finally {try {connection.close();}catch (SQLException sq){}}
 	}
 	public State buscarPorId(String idState) {
 		State state = null;
@@ -44,7 +48,7 @@ public class StateRepositoryImpl implements StateRepository {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException(ex);
-		}
+		}finally {try {connection.close();}catch (SQLException sq){}}
 		return state;
 	}	
 }
